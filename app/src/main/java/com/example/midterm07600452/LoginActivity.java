@@ -8,39 +8,49 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.midterm07600452.Model.Auth;
 
 public class LoginActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        EditText userEdittext = findViewById(R.id.editText);
-        EditText passwordEdittext = findViewById(R.id.editText2);
-        String inputuser = userEdittext.getText().toString();
-        String inputpass = passwordEdittext.getText().toString();
-        Auth auth = new Auth(inputuser, inputpass);
-        final boolean result = auth.check();
-        if (result) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            intent.putExtra("aaa", inputuser);
-            startActivity(intent);
-            finish();
-            Toast.makeText(LoginActivity.this, "ยินดีต้อนรับ Natchaya", Toast.LENGTH_SHORT).show();
-        } else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this);
-            dialog.setTitle("Error");
-            dialog.setMessage("Invalid email or password");
-            dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+        Button login = findViewById(R.id.button);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText userEdittext = findViewById(R.id.editText);
+                EditText passwordEdittext = findViewById(R.id.editText2);
+                String inputuser = userEdittext.getText().toString();
+                String inputpass = passwordEdittext.getText().toString();
+                Auth auth = new Auth(inputuser, inputpass);
+                final boolean result = auth.check();
+                if (result) {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("aaa", inputuser);
+                    startActivity(intent);
+                    finish();
+                    Toast.makeText(LoginActivity.this, "ยินดีต้อนรับ Natchaya", Toast.LENGTH_SHORT).show();
+                } else {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this);
+                    dialog.setTitle("Error");
+                    dialog.setMessage("Invalid email or password");
+                    dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }).show();
 
                 }
-            }).show();
+            }
+        });
 
-        }
     }
 }
