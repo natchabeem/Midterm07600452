@@ -14,8 +14,6 @@ import android.widget.Toast;
 import com.example.midterm07600452.Model.Auth;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String EMAIL = "1234";
-    private static final String PASSWORD = "5678";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
             intent.putExtra("aaa", inputuser);
             startActivity(intent);
             finish();
-            Toast.makeText(LoginActivity.this, "ยินดีต้อนรับ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "ยินดีต้อนรับ Natchaya", Toast.LENGTH_SHORT).show();
         } else {
             AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this);
             dialog.setTitle("Error");

@@ -21,16 +21,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
-                intent.putExtra("user","pass");
-                startActivity(intent);
-                finish();
-            }
-        },3000);
+        Intent intent = getIntent();
+        String beem = intent.getStringExtra("aaa");
 
     }
 }
